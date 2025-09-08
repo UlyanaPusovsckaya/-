@@ -1,25 +1,327 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36414.22 d17.14
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab1", "Lab1\Lab1.csproj", "{11B0A150-10FE-409D-911E-7AF899D1D777}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{11B0A150-10FE-409D-911E-7AF899D1D777}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{11B0A150-10FE-409D-911E-7AF899D1D777}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{11B0A150-10FE-409D-911E-7AF899D1D777}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{11B0A150-10FE-409D-911E-7AF899D1D777}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {841545C2-5D0A-45E1-9D6D-9C8AAFC9B160}
-	EndGlobalSection
-EndGlobal
+using Microsoft.CSharp.RuntimeBinder;
+using System.ComponentModel.DataAnnotations;
+using System.Data;
+using System.Formats.Tar;
+using System.Linq.Expressions;
+using System.Text;
+
+bool isAlive = true;
+byte b = 2;
+sbyte c = -126;
+char d= 'g';
+decimal e= 25;
+double f= 48;
+float g= 36;
+int Level=5;
+uint joke = 478;
+long k = -5896;
+ulong l = 7893;
+short s = -145;
+ushort t = 14236;
+object x = 44.6;
+string m;
+
+Console.Write("Введите строку:");
+m = Console.ReadLine();
+Console.WriteLine(isAlive);
+Console.WriteLine(b);
+Console.WriteLine(c);
+Console.WriteLine(d);
+
+Console.Write("Введите своё имя:");
+Console.ReadLine();
+Console.Write("Введите свой возраст:");
+int Age = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите свой вес:");
+double Weight = Convert.ToDouble(Console.ReadLine());
+Console.Write("Введите что-то типа decimal:");
+decimal smth = Convert.ToDecimal(Console.ReadLine());
+
+Console.Write("Примеры неявного приведения:\n");
+byte v = 4;
+ushort n = v;
+Console.WriteLine(n);
+
+sbyte am = 4;
+short nyam = am;
+Console.WriteLine(nyam);
+
+int melon = 9;
+float water = melon;
+Console.WriteLine(water);
+
+float tear = 78;
+double flower = tear;
+Console.WriteLine(flower);
+
+short home = -5;
+int less = home;
+Console.WriteLine(less);
+
+Console.Write("Примеры явного приведения:\n");
+int lok = 4;
+int hik = 6;
+byte cik = (byte)(lok+hik);
+Console.WriteLine(cik);
+
+char ty = 'f';
+char re = 'g';
+int hffh = (int)(ty + re);
+Console.WriteLine(hffh);
+
+byte fork = 76;
+byte spoon = 2;
+int knife = (int)(fork + spoon);
+Console.WriteLine(knife);
+
+uint sheep = 256;
+uint cat = 4;
+double dog = (double)(sheep + cat);
+Console.WriteLine(dog);
+
+long shop = 7000;
+long store = 5000;
+float market = (float)(shop + store);
+Console.WriteLine(market);
+
+Console.Write("Упаковка и распаковка значимых типов:\n");
+int apple = 123;
+object orange = apple;
+Console.WriteLine(orange);
+
+double bird = 45.6;
+object pig = bird;
+Console.WriteLine(pig);
+
+string finger = "okey";
+object hand = finger;
+Console.WriteLine(hand);
+
+orange = 123;
+apple = (int)orange;
+Console.WriteLine(apple);
+
+pig = 45.6;
+bird = (double)pig;
+Console.WriteLine(bird);
+
+hand = "okey";
+finger = (string)hand;
+Console.WriteLine(finger);
+
+Console.Write("Неявно типизированная переменная:\n");
+var red = "Hello, C#";
+Console.WriteLine(red);
+
+Console.Write("Пример работы переменной с Nullable:\n");
+int? team = null;
+Console.WriteLine(team);
+
+Console.WriteLine("Объяснение ошибки с переменной var:\n");
+/* var pear = "hello";
+pear = 20;*/ 
+
+Console.Write("Работа со строками:\n");
+string world = "Earth", planet = "Jupiter";
+int result = string.Compare(world, planet);
+Console.WriteLine(result);
+
+string string1 = new String(new char[] {'S','a','m','s','u','n','g'});
+string string2 = "Apple Iphone";
+string string3 = new String(new char[] { 'X', 'i', 'a', 'o', 'm', 'i'});
+
+string s4 = string.Concat(string1 + string2);
+Console.WriteLine(s4);
+
+string CopiedString = String.Copy(string3);
+Console.WriteLine(CopiedString);
+
+string SubString = string2.Substring(6);
+Console.WriteLine(SubString);
+
+string[] words = string2.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+foreach (string word in words) 
+{ 
+    Console.WriteLine(word);
+}
+
+string1 = string1.Insert(6, string3);
+Console.WriteLine(string1);
+
+string3 = string3.Remove(0, 2);
+Console.WriteLine(string3);
+
+string s1 = "Samsung";
+Console.WriteLine($"Топ-1 смартфон:{s1}\n Топ-2:{string2}");
+
+string s2 = null;
+string s3 = "";
+if (string.IsNullOrEmpty(s2)) {
+    Console.WriteLine("Строка пуста или null");
+}
+if (s3 == null)
+{
+    Console.WriteLine("Строка является null");
+}
+else {
+    Console.WriteLine("Не является null");
+}
+
+StringBuilder sb=new StringBuilder("Привет всем!");
+sb.Insert(0,"Друзья");
+Console.WriteLine(sb);
+sb.AppendFormat("Друзья");
+Console.WriteLine(sb);
+sb.Remove(5,7);
+Console.WriteLine(sb);
+
+Console.WriteLine("Работа с массивами:\n");
+int[,] numbers = { {0,1,2 },{3,4,5 }};
+int rows = numbers.GetUpperBound(0) + 1;
+int columns = numbers.Length / rows;
+for (int i = 0; i < rows; i++) {
+    for (int j = 0; j < columns; j++) {
+        Console.Write($"{numbers[i,j]}\t");
+    }
+    Console.WriteLine();
+}
+
+string[] ArrayOfString = {"Cat","Dog","Rabbit","Parrot"};
+int length = ArrayOfString.Length;
+for (int i = 0; i < length;i ++)
+{
+    Console.Write($"{ArrayOfString[i]}\t"); 
+}
+Console.WriteLine($"Длина массива:{length}");
+
+Console.WriteLine("Введите индекс элемента, который хотите поменять:");
+int index = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Введите значение:");
+string ValueOfNew = Console.ReadLine();
+if (index >= 0 && index < length)
+{
+    ArrayOfString[index] = ValueOfNew;
+}
+else {
+    Console.WriteLine("Ошибка");
+}
+
+    Console.WriteLine("Новый массив:");
+for (int i = 0; i < length; i++) {
+    Console.Write($"{ArrayOfString[i]}\t");
+}
+Console.WriteLine();
+
+double[][] ArrayofDouble = new double[3][];
+ArrayofDouble[0] = new double[2];
+ArrayofDouble[1] = new double[3];
+ArrayofDouble[2] = new double[4];
+Console.WriteLine("Введите 2 значения для первой строки:");
+for (int j = 0; j < ArrayofDouble[0].Length; j++)
+{
+    ArrayofDouble[0][j] = Convert.ToDouble(Console.ReadLine());
+}
+Console.WriteLine("Введите 3 значения для второй строки:");
+for (int j = 0; j < ArrayofDouble[1].Length; j++)
+{
+    ArrayofDouble[1][j] = Convert.ToDouble(Console.ReadLine());
+}
+Console.WriteLine("Введите 4 значения для третьей строки:");
+for (int j = 0; j < ArrayofDouble[2].Length; j++)
+{
+    ArrayofDouble[2][j] = Convert.ToDouble(Console.ReadLine());
+}
+Console.WriteLine("Полученный массив:");
+for (int i = 0; i < ArrayofDouble.Length; i++) {
+    for (int j = 0; j < ArrayofDouble[i].Length; j++) {
+        Console.Write($"{ArrayofDouble[i][j]}\t");
+    }
+    Console.WriteLine();
+}
+
+var MyString = "Soup";
+var MyArray = new int[] {1,2,3};
+
+Console.WriteLine("Работа с кортежами:");
+(int, string,char,ulong) kor1 = (1,"lol",'a',12345678);
+Console.WriteLine("Целиком:");
+Console.WriteLine(kor1);
+Console.WriteLine("Вывод 1 и 2 элемента:");
+Console.WriteLine(kor1.Item1);
+Console.WriteLine(kor1.Item2);
+
+Console.WriteLine("Распаковка в переменные:");
+var (name,age)= ("Tom",34);
+Console.WriteLine(name);
+Console.WriteLine(age);
+
+var kor2=(1234,"Orsha");
+(int numb, string town)=kor2;
+Console.WriteLine($"{numb},{town}");
+
+var car = (1, "Hello", 3.14);
+(int number, _, double value) = car;
+Console.WriteLine($"{number}, {value}");
+
+Console.WriteLine("Сравнение кортежей:");
+var mav1 = (1, "Hi", 5);
+var mav2 = (1, "Hi", 5);
+var mav3 = (2, "People", 2.71);
+
+bool areEqual1 = mav1 == mav2;
+bool areEqual2 = mav1 == mav3;
+
+Console.WriteLine($"tuple1 == tuple2: {areEqual1}");
+Console.WriteLine($"tuple1 == tuple3: {areEqual2}");
+
+Console.WriteLine("Работа с функциями:");
+    int[] array = new int[3];
+    string stroke = string.Empty;
+    function(array, stroke);
+static void function(int[] array, string stroke)
+{
+    array = new int[] { 1, 5, 3 };
+    stroke = "House";
+    int max = array[0], min = array[0], sum = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i] < min)
+        {
+            min = array[i];
+        }
+        if (array[i] > max)
+        {
+            max = array[i];
+        }
+        sum += array[i];
+    }
+    char firstLetter = stroke[0];
+    var kor4 = (min, max, sum, firstLetter);
+    Console.WriteLine(kor4);
+}
+
+Console.WriteLine("Работа с checked/unchecked:");
+CheckedFunction();
+UncheckedFunction();
+static void CheckedFunction() {
+    checked
+    {
+        int maxA = int.MaxValue;
+        try
+        {
+            int result = maxA + 1;
+            Console.WriteLine($"Checked resilt:{result}");
+        }
+        catch (OverflowException)
+        {
+            Console.WriteLine("OverFlow occurred in checked block.");
+        }
+    }
+}
+static void UncheckedFunction() {
+    unchecked {
+            int maxA = int.MaxValue;
+            int result = maxA + 1;
+            Console.WriteLine($"Unchecked result:{result}");
+    }
+}
